@@ -11,7 +11,7 @@ export const Header: React.FC<Props> = ({ gridArea }) => {
   return (
     <S.Container gridArea={gridArea}>
       Header
-      <S.Logout />
+      {/* <S.Logout /> */}
     </S.Container>
   );
 };
