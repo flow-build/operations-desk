@@ -7,5 +7,9 @@ export const Container = styled.aside`
 
   padding: 1rem;
 
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+
   overflow-y: auto;
 `;
