@@ -31,5 +31,26 @@ export default createGlobalStyle`
     #root {
       font-size: 93.75%;
     }
+
+    /* width */
+    ::-webkit-scrollbar {
+      width: 4px;
+    }
+
+    /* Track */
+    ::-webkit-scrollbar-track {
+      background: #f1f1f1; 
+    }
+    
+    /* Handle */
+    ::-webkit-scrollbar-thumb {
+      background: ${colors.Primary_600}; 
+      border-radius: 5px;
+    }
+
+    /* Handle on hover */
+    ::-webkit-scrollbar-thumb:hover {
+      background: ${colors.Primary_700}; 
+    }
   }
 `;
