@@ -8,5 +8,9 @@ interface Props extends HTMLAttributes<HTMLElement> {
 }
 
 export const Content: React.FC<Props> = ({ gridArea, ...props }) => {
-  return <S.Container gridArea={gridArea}>Content</S.Container>;
+  return (
+    <S.Container gridArea={gridArea}>
+      <S.Pane></S.Pane>
+    </S.Container>
+  );
 };
