@@ -13,10 +13,14 @@ export const Container = styled.button`
 
   cursor: pointer;
 
-  transition: background-color 0.2s;
+  transition: 0.2s;
 
   &:hover {
     background-color: ${(props) =>
       props.outline ? `${colors.Primary_800}` : `${colors.Primary_300}`};
+  }
+
+  &:hover > * {
+    color: #fff;
   }
 `;
