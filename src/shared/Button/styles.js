@@ -14,6 +14,7 @@ export const Container = styled.button`
   padding: 0.5rem 1rem;
 
   cursor: pointer;
+  font-size: 0.8rem;
 
   transition: background-color 0.2s ease-in-out;
 
