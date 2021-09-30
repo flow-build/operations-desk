@@ -1,4 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
+import { colors } from './colors';
 
 export default createGlobalStyle`
   #root {
@@ -23,6 +24,7 @@ export default createGlobalStyle`
     outline: none;
     background: none;
     font: 500 1rem Poppins;
+    color: ${colors.Primary}
   }
 
   @media (min-width: 700px) {

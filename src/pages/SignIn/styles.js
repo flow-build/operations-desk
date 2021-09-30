@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { colors } from '../../styles';
 
 export const Container = styled.div`
   height: 100%;
@@ -29,7 +30,7 @@ export const Text = styled.p`
 export const LoginContainer = styled.div`
   background-color: white;
   padding: 2rem 4rem;
-  border-top: 4px solid blue;
+  border-top: 4px solid ${colors.Primary};
   border-radius: 0.2rem;
 
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
