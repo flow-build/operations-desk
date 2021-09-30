@@ -4,6 +4,7 @@ import * as S from './styles';
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   title: string;
+  outline?: boolean;
 }
 
 export const Button: React.FC<ButtonProps> = React.memo(
