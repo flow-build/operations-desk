@@ -9,7 +9,10 @@ export const Dashboard = () => {
       <Header gridArea="HE"></Header>
       <SideList gridArea="SL"></SideList>
       <Content gridArea="CT"></Content>
-      <Footer gridArea="FT">Footer</Footer>
+      <Footer gridArea="FT">
+        Versão 0.0.1 - Processo em foco: 9a038a0d0a90-d8adasd9ads9 - Número de
+        atividades: 4
+      </Footer>
     </S.Container>
   );
 };
