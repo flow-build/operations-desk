@@ -11,7 +11,7 @@ export const Container = styled.div`
   width: 100%;
 
   display: grid;
-  grid-template-columns: 1fr 2.8fr;
+  grid-template-columns: 1fr 2.5fr;
   grid-template-rows: 80px auto 30px;
   grid-template-areas:
     'HE HE'
