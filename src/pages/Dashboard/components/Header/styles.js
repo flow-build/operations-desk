@@ -19,7 +19,9 @@ export const Menu = styled.div`
   gap: 2rem;
 `;
 
-export const MenuItems = styled.span``;
+export const MenuItems = styled.span`
+  cursor: pointer;
+`;
 
 export const Logout = styled(LogoutIcon)`
   width: 1.6rem;
