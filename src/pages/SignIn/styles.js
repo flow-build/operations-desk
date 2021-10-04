@@ -8,7 +8,8 @@ export const Container = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  /* background: red; */
+
+  background-color: ${colors.Primary_100};
 `;
 
 export const Info = styled.div`
