@@ -6,6 +6,19 @@ export default createGlobalStyle`
     font-size: 87.5%;
   }
 
+  ::placeholder {
+    color: ${colors.Primary_300};
+    opacity: 1; /* Firefox */
+  }
+
+  :-ms-input-placeholder { /* Internet Explorer 10-11 */
+  color: ${colors.Primary_300};
+  }
+
+  ::-ms-input-placeholder { /* Microsoft Edge */
+  color: ${colors.Primary_300};
+  }
+
   * {
     margin: 0;
     padding: 0;
