@@ -10,9 +10,17 @@ interface Props {
   title: string;
   description?: string;
   createdAt?: string;
+  onAccess?: Function;
+  onInfo?: Function;
 }
 
-export const Card: React.FC<Props> = ({ title, description, createdAt }) => {
+export const Card: React.FC<Props> = ({
+  title,
+  description,
+  createdAt,
+  onAccess,
+  onInfo,
+}) => {
   return (
     <S.Container>
       <S.Header>
@@ -25,8 +33,8 @@ export const Card: React.FC<Props> = ({ title, description, createdAt }) => {
       <S.Footer>
         <S.Description>{createdAt ?? ''}</S.Description>
         <S.FooterButtons>
-          <IconButton iconSize={20} icon={Info} outline />
-          <Button title="Acessar" outline />
+          <IconButton iconSize={20} icon={Info} outline onClick={onInfo} />
+          <Button title="Acessar" outline onClick={onAccess} />
         </S.FooterButtons>
       </S.Footer>
     </S.Container>
