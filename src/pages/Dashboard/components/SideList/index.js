@@ -1,38 +1,43 @@
 // @flow
 import React, { HTMLAttributes } from 'react';
-import { useSelector, shallowEqual } from 'react-redux';
+import { useDispatch, useSelector, shallowEqual } from 'react-redux';
 
 import * as S from './styles';
 import { Card } from '../../../../shared';
+import { useFilterAvailableActivity } from '../../../../hooks/useFilterAvailableActivity.hook';
+import { setSelectedActivity } from '../../../../redux/pageNavigation.slice';
 
 interface Props extends HTMLAttributes<HTMLElement> {
   gridArea: string;
 }
 
 export const SideList: React.FC<Props> = ({ gridArea, ...props }) => {
-  const { currentScreen } = useSelector(
+  const dispatch = useDispatch();
+  const { currentFilter } = useSelector(
     (state) => state.pageNavigation,
     shallowEqual
   );
 
-  const items = getItems(currentScreen);
+  const items = useFilterAvailableActivity(currentFilter);
 
-  function getItems(screen: string): Array<any> {
-    if (screen === 'Relatórios') {
-      const reports = JSON.parse(localStorage.getItem('@reports'));
-      return reports.map((r) => ({
-        title: r.title,
-        description: r.description,
-      }));
+  function onAccess(activity) {
+    try {
+      dispatch(setSelectedActivity(activity));
+    } catch (error) {
+      const message = 'Erro ao tentar acessar a informação do card.';
+      console.error(message, error);
     }
-
-    return [];
   }
 
   return (
     <S.Container gridArea={gridArea}>
-      {items.map((i) => (
-        <Card title={i.title} description={i.description} />
+      {items.map((i, index) => (
+        <Card
+          key={index.toString()}
+          title={i.props.result.card.title}
+          description={i.props.result.card.description}
+          onAccess={() => onAccess(i)}
+        />
       ))}
     </S.Container>
   );
