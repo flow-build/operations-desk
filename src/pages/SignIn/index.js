@@ -1,5 +1,6 @@
 import React from 'react';
-import { useHistory } from 'react-router-dom';
+import { useHistory, useLocation } from 'react-router-dom';
+import { useWorkflowManager } from '@flowbuild/redux-toolkit-workflow-manager/useWorkflowManager';
 
 /* Components */
 import { Form } from './components';
@@ -12,12 +13,23 @@ import * as S from './styles';
 
 export const SignIn = () => {
   const history = useHistory();
+  const { state } = useLocation();
+
+  const { activityId } = state;
+
+  const { submitActivity } = useWorkflowManager();
 
   const { subtitle, title } = LOGIN_FAKE;
 
   function onSubmit(username, password) {
+    const payload = {
+      username,
+      password,
+    };
+    console.log('payload', payload);
+    submitActivity(activityId, payload);
     // alert(username);
-    history.push('/dashboard');
+    // history.push('/dashboard');
   }
 
   return (
