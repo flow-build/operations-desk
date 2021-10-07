@@ -9,8 +9,14 @@ export const Container = styled.footer`
 
   display: flex;
   align-items: center;
+  gap: 1rem;
 
   padding: 0 1rem;
 
   font: 200 0.8rem Poppins;
+
+  & > :last-child:hover {
+    cursor: pointer;
+    text-decoration: underline;
+  }
 `;
