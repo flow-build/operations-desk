@@ -1,7 +1,9 @@
 // @flow
 import React, { HTMLAttributes } from 'react';
-import { useSelector, shallowEqual } from 'react-redux';
+import { useDispatch, useSelector, shallowEqual } from 'react-redux';
 import Form from '@rjsf/material-ui';
+import { useWorkflowManager } from '@flowbuild/redux-toolkit-workflow-manager/useWorkflowManager';
+import { setSelectedActivity } from '../../../../redux/pageNavigation.slice';
 
 import * as S from './styles';
 
@@ -17,6 +19,9 @@ export const Content: React.FC<Props> = ({
   isReport,
   ...props
 }) => {
+  const dispatch = useDispatch();
+  const { submitActivity } = useWorkflowManager();
+
   const { selectedActivity } = useSelector(
     (state) => state.pageNavigation,
     shallowEqual
@@ -24,8 +29,6 @@ export const Content: React.FC<Props> = ({
 
   const isJsonSchema = !!selectedActivity?.props?.result?.jsonSchema;
   const formSchema = getFormSchema();
-
-  console.log('selectedActivity', selectedActivity);
 
   function getFormSchema() {
     if (isJsonSchema) {
@@ -36,12 +39,14 @@ export const Content: React.FC<Props> = ({
     return { jsonSchema: null, uiSchema: null };
   }
 
-  // isReport && console.log('content', JSON.parse(content)[0]);
-  /* {isReport && (
-          <S.ReportContent
-            dangerouslySetInnerHTML={{ __html: JSON.parse(content)[0].embed }}
-          />
-        )} */
+  function onSubmit(event) {
+    console.log('event', event);
+    const { formData } = event;
+    console.log('selectedActivity.id', selectedActivity.id);
+    console.log('formData', formData);
+    submitActivity(selectedActivity.id, formData);
+    dispatch(setSelectedActivity(null));
+  }
 
   return (
     <S.Container gridArea={gridArea}>
@@ -50,7 +55,15 @@ export const Content: React.FC<Props> = ({
           <Form
             schema={formSchema.jsonSchema}
             uiSchema={formSchema.uiSchema}
-            onSubmit={(e) => console.log('e', e)}
+            onSubmit={onSubmit}
+          />
+        )}
+
+        {!isJsonSchema && (
+          <S.ReportContent
+            dangerouslySetInnerHTML={{
+              __html: selectedActivity?.props?.result.embed,
+            }}
           />
         )}
       </S.Pane>
