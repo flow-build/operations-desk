@@ -6,10 +6,23 @@ import { WorkflowManager } from '@flowbuild/redux-toolkit-workflow-manager';
 
 import { store } from './redux';
 
+const chars = [
+  ...'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789',
+];
+const randomId = [...Array(19)].map(
+  (i) => chars[(Math.random() * chars.length) | 0]
+).join``;
+
+const MQTT_CONFIG = {
+  host: '54.173.95.157',
+  port: 8000,
+  clientId: randomId,
+};
+
 function App() {
   return (
     <Provider store={store}>
-      <WorkflowManager>
+      <WorkflowManager mqttConfig={MQTT_CONFIG}>
         <Routes />
         <GlobalStyles />
       </WorkflowManager>
