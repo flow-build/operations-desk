@@ -4,6 +4,7 @@ const INITIAL_STATE = {
   currentScreen: 'Home',
   currentFilter: [],
   selectedActivity: null,
+  totalActivities: 0,
 };
 
 const pageNavigationSlice = createSlice({
@@ -35,10 +36,19 @@ const pageNavigationSlice = createSlice({
       ...state,
       selectedActivity: activity,
     }),
+
+    setTotalActivities: (state, { payload: total }) => ({
+      ...state,
+      totalActivities: total,
+    }),
   },
 });
 
-export const { setCurrentFilter, setCurrentScreen, setSelectedActivity } =
-  pageNavigationSlice.actions;
+export const {
+  setCurrentFilter,
+  setCurrentScreen,
+  setSelectedActivity,
+  setTotalActivities,
+} = pageNavigationSlice.actions;
 
 export default pageNavigationSlice.reducer;
