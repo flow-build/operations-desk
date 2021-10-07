@@ -14,8 +14,8 @@ const randomId = [...Array(19)].map(
 ).join``;
 
 const MQTT_CONFIG = {
-  host: '54.173.95.157',
-  port: 8000,
+  host: process.env.REACT_APP_MQTT_URL,
+  port: parseInt(process.env.REACT_APP_MQTT_PORT),
   clientId: randomId,
 };
 

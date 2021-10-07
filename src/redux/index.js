@@ -10,6 +10,6 @@ export const store = configureStore({
     pageNavigation: pageNavigationReducer,
 
     login: loginReducer,
-    workflowManager: WorkflowManagerSlice('http://54.173.95.157:3000'),
+    workflowManager: WorkflowManagerSlice(process.env.REACT_APP_API_URL),
   },
 });

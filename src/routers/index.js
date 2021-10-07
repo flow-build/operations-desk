@@ -52,7 +52,7 @@ const NestedRoutes = () => {
   async function handleLogin() {
     try {
       const body = {};
-      await login('http://54.173.95.157:3000/token', body);
+      await login(`${process.env.REACT_APP_API_URL}/token`, body);
     } catch (error) {
       const message = 'Erro ao tentar fazer login anônimo.';
       console.error(message, error);
