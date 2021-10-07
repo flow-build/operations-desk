@@ -1,11 +1,14 @@
 // @flow
-import React, { HTMLAttributes } from 'react';
+import React, { HTMLAttributes, useEffect } from 'react';
 import { useDispatch, useSelector, shallowEqual } from 'react-redux';
 
 import * as S from './styles';
 import { Card } from '../../../../shared';
 import { useFilterAvailableActivity } from '../../../../hooks/useFilterAvailableActivity.hook';
-import { setSelectedActivity } from '../../../../redux/pageNavigation.slice';
+import {
+  setSelectedActivity,
+  setTotalActivities,
+} from '../../../../redux/pageNavigation.slice';
 
 interface Props extends HTMLAttributes<HTMLElement> {
   gridArea: string;
@@ -13,12 +16,18 @@ interface Props extends HTMLAttributes<HTMLElement> {
 
 export const SideList: React.FC<Props> = ({ gridArea, ...props }) => {
   const dispatch = useDispatch();
-  const { currentFilter } = useSelector(
+  const { currentFilter, totalActivities } = useSelector(
     (state) => state.pageNavigation,
     shallowEqual
   );
 
   const items = useFilterAvailableActivity(currentFilter);
+
+  useEffect(() => {
+    if (totalActivities !== items.length) {
+      dispatch(setTotalActivities(items.length));
+    }
+  }, [totalActivities, items]);
 
   function onAccess(activity) {
     try {
