@@ -3,7 +3,7 @@ export const DASHBOARD_FAKE = {
     {
       aba: 'Home',
       label: 'Home',
-      wfFilter: [['homeTeste', ['JSON_FORM']]],
+      wfFilter: [['homeTeste', ['FORM']]],
     },
     {
       aba: 'Sobre',
