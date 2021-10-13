@@ -42,6 +42,7 @@ export const SideList: React.FC<Props> = ({ gridArea, ...props }) => {
     <S.Container gridArea={gridArea}>
       {items.map((i, index) => (
         <Card
+          source={i.props.result.card.source}
           key={index.toString()}
           title={i.props.result.card.title}
           description={i.props.result.card.description}
