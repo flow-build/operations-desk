@@ -1,6 +1,6 @@
-# Getting Started with Create React App
+# Flowbuild's Operation Desk
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project offers a web interface to view and submit tasks from flowBuild workflows.
 
 ## Available Scripts
 
@@ -10,6 +10,14 @@ In the project directory, you can run:
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+
+In order to the application works, 3 environment variables must me set:
+
+- REACT_APP_API_URL
+- REACT_APP_MQTT_URL
+- REACT_APP_MQTT_PORT
+
+The first one is your flowbuild server url, the other 2 the url and port from your MQTT broker.
 
 The page will reload if you make edits.\
 You will also see any lint errors in the console.
